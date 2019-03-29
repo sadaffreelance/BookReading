@@ -7,7 +7,7 @@
       "assets/fonts/proximanova-light.otf",
       "assets/fonts/proximanova-regular.otf",
       "assets/fonts/proximanova-regularit.otf",
-      "assets/fonts/proximanova-semibold.otf",
+      "assets/fonts/proximanova-semibold.otf"
     ]
   },
   "scripts": {
@@ -16,9 +16,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@types/react-redux": "^7.0.5",
     "react": "16.8.3",
     "react-native": "0.59.2",
-    "react-native-material-kit": "^0.5.1"
+    "react-native-material-kit": "^0.5.1",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-observable": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
