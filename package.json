@@ -2,6 +2,14 @@
   "name": "BookReading",
   "version": "0.0.1",
   "private": true,
+  "rnpm": {
+    "assets": [
+      "assets/fonts/proximanova-light.otf",
+      "assets/fonts/proximanova-regular.otf",
+      "assets/fonts/proximanova-regularit.otf",
+      "assets/fonts/proximanova-semibold.otf",
+    ]
+  },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
