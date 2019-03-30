@@ -1,3 +1,4 @@
+import Config from 'react-native-config'
 import { Action } from 'redux';
 import {  
     mergeMap,
@@ -22,7 +23,7 @@ export const loginEpic$ = (action$: ActionsObservable<Action<any>>,
         ofType(LoginActionKeys.request),
         map((action) => action as RequestLogin),
         mergeMap((action) => 
-            post("https://evening-citadel-85778.herokuapp.com/whiskey/", action.payload).pipe(
+            post(`${Config.API_URL}/login`, action.payload).pipe(
                 map((response) => ({ type: LoginActionKeys.success, payload: response })),
                 catchError((error) => of({ type: LoginActionKeys.failure, payload: error }))
             )

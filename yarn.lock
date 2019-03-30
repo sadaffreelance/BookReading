@@ -4661,6 +4661,10 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.2, react-is@^16.8.3, react-is
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
 
+react-native-config@^0.11.7:
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
+
 react-native-material-kit@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/react-native-material-kit/-/react-native-material-kit-0.5.1.tgz#fc05605273bfa0d145c6e36cca755cbde5b8db3a"
