@@ -4,8 +4,9 @@ import { Action } from 'redux';
 // - Action keys 
 //============================================================================
 export enum LoginActionKeys {
-    request = 'LoginActions.request',
-    
+    request = "LoginActions.request",
+    success = "LoginActions.success",
+    failure = "LoginActions.failure"
 }
 
 //============================================================================
@@ -14,10 +15,20 @@ export enum LoginActionKeys {
 
 export interface RequestLogin extends Action<LoginActionKeys> {
     type: LoginActionKeys.request;
-    data: any;
-    response: any;
+    payload: any;
+}
+
+export interface successLogin extends Action<LoginActionKeys> {
+    type: LoginActionKeys.success;
+    payload: string;
+}
+
+export interface failureLogin extends Action<LoginActionKeys> {
+    type: LoginActionKeys.failure;
+    payload: string;
 }
 
 export type LoginActionTypes =  
     | RequestLogin
-    
+    | successLogin
+    | failureLogin

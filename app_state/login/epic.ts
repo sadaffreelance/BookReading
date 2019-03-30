@@ -1,44 +1,30 @@
 import { Action } from 'redux';
-import { ActionsObservable, StateObservable, ofType } from 'redux-observable';
 import {  
+    mergeMap,
     map, 
+    catchError, 
 } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { of } from 'rxjs';
+import { ActionsObservable, StateObservable, ofType } from 'redux-observable';
 import { AppState, DependenciesContainer } from '../index';
 import { 
     LoginActionKeys,
-    RequestLogin
+    RequestLogin,
 } from './actions';
-
-
-//============================================================================
-// - Observables
-//============================================================================
-
-const requestObservable = (): Observable<Status> => {
-    return new Observable(observer => {
-        Permissions.request()
-            .then((status: Status) => {
-                observer.next(status);
-            })
-            .catch((error: Error) => {
-                observer.error(error);
-            });
-    });
-}
 
 //============================================================================
 // - Epics
 //============================================================================
 export const loginEpic$ = (action$: ActionsObservable<Action<any>>,
-                                state$: StateObservable<AppState>,
-                                deps: DependenciesContainer) => 
+                                            state$: StateObservable<AppState>,
+                                            { post }: DependenciesContainer) => 
     action$.pipe(
-        // attempt to fetch location after we have successfully gotten location permission
-        ofType(
-            LoginActionKeys.request,
-        ),
+        ofType(LoginActionKeys.request),
         map((action) => action as RequestLogin),
-        // The filter below should not be necessary, but it is an extra safeguard
-        // in case this action is dispatched with a different permissionStatus
+        mergeMap((action) => 
+            post("https://evening-citadel-85778.herokuapp.com/whiskey/", action.payload).pipe(
+                map((response) => ({ type: LoginActionKeys.success, payload: response })),
+                catchError((error) => of({ type: LoginActionKeys.failure, payload: error }))
+            )
+        ),
     );
